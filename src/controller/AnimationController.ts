@@ -1,5 +1,5 @@
 import { getAllAnimations, getAnimationById, createAnimation, updateAnimation } from "../repository/AnimationRepository";
-import { AnimationInterface, AnimationUpdateInterface } from "../types/animationTypes";
+import { AnimationInterface, AnimationUpdateInterface, GetAnimation } from "../types/animationTypes";
 
 export const getAnimations = async () => {
   try {
@@ -10,8 +10,9 @@ export const getAnimations = async () => {
   }
 };
 
-export const getAnimation = async ({ id }: { id: BigInt }) => {
+export const getAnimation = async (args: GetAnimation) => {
   try {
+    const { id } = args; 
     const animation = await getAnimationById(id);
     if (animation) {
       return animation;

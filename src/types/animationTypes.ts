@@ -1,10 +1,14 @@
+export interface GetAnimation {
+  id: BigInt
+}
+
 export interface AnimationInterface {
   id?: BigInt;
   title: string;
   description?: string;
   fileJSON?:Text;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface AnimationUpdateInterface {

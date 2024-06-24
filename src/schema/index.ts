@@ -18,8 +18,8 @@ const RootQuery = new GraphQLObjectType({
       args: {
         id: { type: new GraphQLNonNull(GraphQLID), description: "ID of the animation" },
       },
-      resolve: (parent, args) => {
-        return getAnimation(args);
+      resolve: (parent, { id }) => {
+        return getAnimation({ id });
       },
     },
   },
@@ -36,8 +36,8 @@ const Mutation = new GraphQLObjectType({
         description: { type: GraphQLString, description: "Description of the animation" },
         fileJSON: { type: new GraphQLNonNull(GraphQLString), description: "JSON file content for the animation" },
       },
-      resolve: (_, args) => {
-        return addAnimation(args);
+      resolve: (_, { id, title, description, fileJSON }) => {
+        return addAnimation({ id, title, description, fileJSON });
       },
     },
     updateAnimation: {
